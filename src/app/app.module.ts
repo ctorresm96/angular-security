@@ -10,16 +10,13 @@ import { routesConfig } from "./routes.config";
 import { LessonsService } from "./services/lessons.service";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { AuthService } from "./services/auth.service";
 import { AdminComponent } from "./admin/admin.component";
 import { Router, RouterModule } from "@angular/router";
 
 import { RbacAllowDirective } from "./common/rbac-allow.directive";
+import { AuthService } from "./services/auth.service";
 
-export function createAdminOnlyGuard(
-  authService: AuthService,
-  router: Router
-) {}
+export function createAdminOnlyGuard() {}
 
 @NgModule({
   declarations: [
@@ -40,15 +37,7 @@ export function createAdminOnlyGuard(
     RouterModule.forRoot(routesConfig),
     ReactiveFormsModule,
   ],
-  providers: [
-    LessonsService,
-    AuthService,
-    {
-      provide: "adminsOnlyGuard",
-      useFactory: createAdminOnlyGuard,
-      deps: [AuthService, Router],
-    },
-  ],
+  providers: [LessonsService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,7 +4,6 @@ import { catchError } from "rxjs/operators";
 import { Component, OnInit } from "@angular/core";
 import { LessonsService } from "../services/lessons.service";
 import { Lesson } from "../model/lesson";
-import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: "lessons",
